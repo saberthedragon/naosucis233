@@ -35,10 +35,10 @@ Route::get('/', function () {
 
 Route::get('/episodes', function () {
 
-    $limit = intval(request()->query('limit')); // Needed (?)
-    $limit = $limit < 1 ? 10 : $limit;
+    $showNumber = intval(request()->query('showNumber')); // Needed (?)
+    $showNumber = $showNumber < 1 ? 10 : $showNumber; // similar to 'isSet = default"
 
-    $episodes = TvMazeAPI::fetch($limit);
-    // $show           = isset($_GET['show']) ? $_GET['show'] : '1';    
+    $episodes = TvMazeAPI::fetch($showNumber);
+    // dd($episodes); // Testing output of "fetch"
     return view('episodes/index', ['episodes' => $episodes]); // ie: view 'episodes' --> episodes.blade.php
 });

@@ -9,19 +9,19 @@ use Illuminate\Support\Collection;
 
 class TvMazeAPI
 {
-    public static function fetch($limit)
+    public static function fetch($showNumber)
     {
-        $contentName = Http::get("https://api.tvmaze.com/shows/$show?limit=$limit")->json();
-        $contentDetails = Http::get("https://api.tvmaze.com/shows/$show/episodes")->json();
+
+        $contentDetails = Http::get("https://api.tvmaze.com/shows/$showNumber/episodes")->json();
 
         $episodeCollections = collect($contentDetails);
 
         // Restructuring of "Episode Info" here
 
         return $episodeCollections->map(function ($input) {
-            $image = isset($input->image->medium) ? $input->image->medium : "";
+            $image = isset($input['image']['medium']) ? $input['image']['medium'] : "";
             return
-                new Episode($input['name'], $input['image']['medium'], $input['season'], $input['number'], $input['summary']);
+                new Episode($input['name'], $image, $input['season'], $input['number'], $input['summary']);
         }, $episodeCollections);
     }
 }
