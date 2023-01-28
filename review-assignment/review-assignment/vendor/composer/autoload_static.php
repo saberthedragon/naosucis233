@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158
+class ComposerStaticInitaae809e3ab41d4ed3f2132f5ad237b1c
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -146,7 +146,6 @@ class ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Inflector\\' => 19,
-            'Doctrine\\Deprecations\\' => 22,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Dflydev\\DotAccessData\\' => 22,
             'DeepCopy\\' => 9,
@@ -448,10 +447,6 @@ class ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector',
         ),
-        'Doctrine\\Deprecations\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations',
-        ),
         'Doctrine\\Common\\Lexer\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/src',
@@ -666,8 +661,6 @@ class ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158
         'Dflydev\\DotAccessData\\Util' => __DIR__ . '/..' . '/dflydev/dot-access-data/src/Util.php',
         'Doctrine\\Common\\Lexer\\AbstractLexer' => __DIR__ . '/..' . '/doctrine/lexer/src/AbstractLexer.php',
         'Doctrine\\Common\\Lexer\\Token' => __DIR__ . '/..' . '/doctrine/lexer/src/Token.php',
-        'Doctrine\\Deprecations\\Deprecation' => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations/Deprecation.php',
-        'Doctrine\\Deprecations\\PHPUnit\\VerifyDeprecations' => __DIR__ . '/..' . '/doctrine/deprecations/lib/Doctrine/Deprecations/PHPUnit/VerifyDeprecations.php',
         'Doctrine\\Inflector\\CachedWordInflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/CachedWordInflector.php',
         'Doctrine\\Inflector\\GenericLanguageInflectorFactory' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/GenericLanguageInflectorFactory.php',
         'Doctrine\\Inflector\\Inflector' => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Inflector/Inflector.php',
@@ -2108,6 +2101,7 @@ class ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158
         'Illuminate\\Foundation\\Events\\LocaleUpdated' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Events/LocaleUpdated.php',
         'Illuminate\\Foundation\\Events\\MaintenanceModeDisabled' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Events/MaintenanceModeDisabled.php',
         'Illuminate\\Foundation\\Events\\MaintenanceModeEnabled' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Events/MaintenanceModeEnabled.php',
+        'Illuminate\\Foundation\\Events\\PublishingStubs' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Events/PublishingStubs.php',
         'Illuminate\\Foundation\\Events\\VendorTagPublished' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Events/VendorTagPublished.php',
         'Illuminate\\Foundation\\Exceptions\\Handler' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php',
         'Illuminate\\Foundation\\Exceptions\\RegisterErrorViewPaths' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Exceptions/RegisterErrorViewPaths.php',
@@ -2455,6 +2449,7 @@ class ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158
         'Illuminate\\Support\\DateFactory' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/DateFactory.php',
         'Illuminate\\Support\\Enumerable' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/Enumerable.php',
         'Illuminate\\Support\\Env' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Env.php',
+        'Illuminate\\Support\\Exceptions\\MathException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Exceptions/MathException.php',
         'Illuminate\\Support\\Facades\\App' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Facades/App.php',
         'Illuminate\\Support\\Facades\\Artisan' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Facades/Artisan.php',
         'Illuminate\\Support\\Facades\\Auth' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Facades/Auth.php',
@@ -3801,6 +3796,7 @@ class ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158
         'PhpParser\\Lexer\\TokenEmulator\\MatchTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/MatchTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\NullsafeTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/NullsafeTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\NumericLiteralSeparatorEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/NumericLiteralSeparatorEmulator.php',
+        'PhpParser\\Lexer\\TokenEmulator\\ReadonlyFunctionTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ReadonlyFunctionTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\ReadonlyTokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ReadonlyTokenEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\ReverseEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/ReverseEmulator.php',
         'PhpParser\\Lexer\\TokenEmulator\\TokenEmulator' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Lexer/TokenEmulator/TokenEmulator.php',
@@ -5714,10 +5710,10 @@ class ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitcd475d74c6a9962f83bc0ca79f2a8158::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitaae809e3ab41d4ed3f2132f5ad237b1c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitaae809e3ab41d4ed3f2132f5ad237b1c::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitaae809e3ab41d4ed3f2132f5ad237b1c::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitaae809e3ab41d4ed3f2132f5ad237b1c::$classMap;
 
         }, null, ClassLoader::class);
     }
