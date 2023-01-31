@@ -18,11 +18,7 @@ class TvMazeAPI
 
         // Restructuring of "Episode Info" here
 
-        return $episodeCollections->map(function ($input) {
-            $image = isset($input['image']['medium']) ? $input['image']['medium'] : "";
-            return
-                new Episode($input['name'], $image, $input['season'], $input['number'], $input['summary']);
-        }, $episodeCollections);
+        return $episodeCollections = Episode::firstOrCreate(['name' => 'name', 'image' => 'image', 'season' => 'season', 'episode' => 'number', 'summary' => 'summary']);
     }
 }
 

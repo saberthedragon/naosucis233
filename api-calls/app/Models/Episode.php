@@ -8,15 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Episode extends Model
 {
 
-    // TODO: Replace below with $fillable
-
-    function __construct(
-        public $name,
-        public $image,
-        public $season,
-        public $episode, // "1" is tagged "Default" ;)
-        public $summary
-    ) {
-        // Can do more here
-    }
+    protected $fillable = [
+        'name',
+        'image',
+        'season',
+        'episode',
+        'summary'
+    ];
 } // End of class here
