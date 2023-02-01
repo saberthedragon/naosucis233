@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Episode;
 use Illuminate\Support\Facades\Route;
 use App\Models\TvMazeAPI; // NameSpace Link for "models"
 
@@ -46,7 +47,7 @@ Route::get('/load-episodes', function () {
 Route::get(' /view-episodes', function () {
     $showNumber = intval(request()->query('showNumber'));
     $showNumber = $showNumber < 1 ? 10 : $showNumber;
-    $episodes   = "blah";
+    $episodes   = Episode::where('show_Number', $showNumber)->get();
 
     return view('episodes/index', ['episodes' => $episodes]);
 });

@@ -13,6 +13,7 @@ class Episode extends Model
         'image',
         'season',
         'episode',
+        'show_number',
         'summary'
     ];
 } // End of class here

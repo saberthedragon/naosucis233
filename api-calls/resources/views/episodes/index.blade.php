@@ -15,10 +15,10 @@
 <body>
 
 
+    @if(!$episodes->isEmpty())
+
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
-
-
         @foreach ($episodes as $show_obj)
 
         <div class="col">
@@ -26,15 +26,22 @@
                 <img src="{{$show_obj->image}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{$show_obj->name}}</h5>
-                    <p class="card-text">{{strip_tags ($show_obj->summary) }}</p>
+                    <p class="card-text">{{ $show_obj->summary }}</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">{{$show_obj->episode}}</small>
+                    <small class="text-muted">{{$show_obj->episode }}</small>
                 </div>
             </div>
         </div>
         @endForEach
     </div>
+
+    @else
+    No Episodes to show.
+
+    @endif
+
+
 </body>
 
 </html>
@@ -43,4 +50,7 @@
 
 <!-- Bootstrap Styling (WITHOUT the CSS back-up ;)  
 
-Use "PHP strip Tags" to remove extra <p> etc from data. -->
+Use "PHP strip Tags" to remove extra <p> etc from data.
+    
+
+-->
