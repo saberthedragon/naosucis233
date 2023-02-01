@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
+
 // Class can be used to 'filter' an API, to 'keep' what we want.
-class Episode
+class Episode extends Model
 {
 
-    function __construct(
-        public $name,
-        public $image,
-        public $season,
-        public $episode, // "1" is tagged "Default" ;)
-        public $summary
-    ) {
-        // Can do more here
-    }
+    protected $fillable = [
+        'name',
+        'image',
+        'season',
+        'episode',
+        'show_number',
+        'summary'
+    ];
 } // End of class here

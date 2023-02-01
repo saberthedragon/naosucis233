@@ -16,18 +16,25 @@ class TvMazeAPI
 
         $episodeCollections = collect($contentDetails);
 
+
         // Restructuring of "Episode Info" here
 
-        return $episodeCollections->map(function ($input) {
+
+
+        // return $episodeCollections->map(function ($input) {
+
+        return $episodeCollections->map(function ($input) use ($showNumber) {
             $image = isset($input['image']['medium']) ? $input['image']['medium'] : "";
-            return
-                new Episode($input['name'], $image, $input['season'], $input['number'], $input['summary']);
+
+
+            // -->> FirstOrCreate == Checks IF it exists. If not, create the item. ;) <<--
+
+            return Episode::firstOrCreate(['name' => $input['name'], 'image' => $image, 'season' => $input['season'], 'episode' => $input['number'], 'show_number' => $showNumber, 'summary' => strip_tags($input['summary'])]);
         }, $episodeCollections);
     }
-}
+};
 
-
-
+// new Episode($input['name'], $image, $input['season'], $input['number'], $input['summary']); --> My list above
 
 // // Crude, NOT "Professional" method for APIs ;)
 

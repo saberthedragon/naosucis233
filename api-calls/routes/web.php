@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Episode;
 use Illuminate\Support\Facades\Route;
 use App\Models\TvMazeAPI; // NameSpace Link for "models"
 
@@ -33,7 +34,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/episodes', function () {
+Route::get('/load-episodes', function () {
 
     $showNumber = intval(request()->query('showNumber')); // Needed (?)
     $showNumber = $showNumber < 1 ? 10 : $showNumber; // similar to 'isSet = default"
@@ -41,4 +42,12 @@ Route::get('/episodes', function () {
     $episodes = TvMazeAPI::fetch($showNumber);
     // dd($episodes); // Testing output of "fetch"
     return view('episodes/index', ['episodes' => $episodes]); // ie: view 'episodes' --> episodes.blade.php
+});
+
+Route::get(' /view-episodes', function () {
+    $showNumber = intval(request()->query('showNumber'));
+    $showNumber = $showNumber < 1 ? 10 : $showNumber;
+    $episodes   = Episode::where('show_Number', $showNumber)->get();
+
+    return view('episodes/index', ['episodes' => $episodes]);
 });
