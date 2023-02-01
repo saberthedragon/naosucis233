@@ -26,7 +26,7 @@
                 <img src="{{$show_obj->image}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{$show_obj->name}}</h5>
-                    <p class="card-text">{{ $show_obj->summary }}</p>
+                    <p class="card-text">{{ strip_tags( $show_obj->summary ) }}</p>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">{{$show_obj->episode }}</small>

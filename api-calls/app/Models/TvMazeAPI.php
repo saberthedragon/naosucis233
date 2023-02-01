@@ -29,7 +29,7 @@ class TvMazeAPI
 
             // -->> FirstOrCreate == Checks IF it exists. If not, create the item. ;) <<--
 
-            return Episode::firstOrCreate(['name' => $input['name'], 'image' => $image, 'season' => $input['season'], 'episode' => $input['number'], 'show_number' => $showNumber, 'summary' => $input[strip_tags('summary')]]);
+            return Episode::firstOrCreate(['name' => $input['name'], 'image' => $image, 'season' => $input['season'], 'episode' => $input['number'], 'show_number' => $showNumber, 'summary' => strip_tags($input['summary'])]);
         }, $episodeCollections);
     }
 };
