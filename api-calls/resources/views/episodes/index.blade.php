@@ -1,3 +1,12 @@
+<!-- {{ dd ($episodes) }}   --> <!-- Tells "routes" to output to here; Laravel's ver of "print_r" -->
+
+<!-- Bootstrap Styling (WITHOUT the CSS back-up ;)  
+
+Use "PHP strip Tags" to remove extra <p> etc from data.
+    
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,12 +54,3 @@
 </body>
 
 </html>
-
-<!-- {{ dd ($episodes) }}   --> <!-- Tells "routes" to output to here; Laravel's ver of "print_r" -->
-
-<!-- Bootstrap Styling (WITHOUT the CSS back-up ;)  
-
-Use "PHP strip Tags" to remove extra <p> etc from data.
-    
-
--->
