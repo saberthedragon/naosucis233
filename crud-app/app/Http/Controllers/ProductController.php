@@ -37,8 +37,7 @@ class ProductController extends Controller
     public function create()
     {
 
-        // blah
-
+        return view('products.create'); // Linked via "Button"
     } // end of "Create"
 
     /**
@@ -51,8 +50,15 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        // blah
-
+        // Form Validation here
+        $validatedData = $request->validate([
+            // Validation rules here
+            'name' => 'required',
+            'price' => 'decimal', // decimal(19, 4)
+            'discription' => 'required',
+            'item_number' => 'ineger', // Resume lecture @ 22:58
+            'image', // imageURL method in Faker'
+        ]);
     } // end of "Store"
 
     /**

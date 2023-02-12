@@ -10,6 +10,8 @@
   * From the index page, each product's name should be linkable to the show page (<h5> format needs updating ;) )
 
   * Bootstrap moved to "view/layout.blade.php"
+
+  * Create button: <a class=bootstrap class href="{{route('products.create')}}">Create<</a>
 -->
 
 @extends('layout')
