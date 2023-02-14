@@ -16,11 +16,18 @@
 @extends('layout')
 
 @section('content')
+@if ( $errors->any() )
+<div class="toast toast-error">
+  @forEach ( $errors->all() as $error)
+  <span>{{$error}}</span><br />
+  @endForEach
+</div>
+@endIf
 
 Bootstrap == Form Here
 <form method="POST" action="{{route('products.store')}}">
   @crsf
-
+  blah blah value="{{old()}}"
 </form>
 
 @endSection

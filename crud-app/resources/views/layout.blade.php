@@ -18,6 +18,11 @@
 
 <body>
   <shared bootstrap here></shared>
+  @if( session())->get('success') )
+  <div class="toast toast-success">
+    {{session()->get('success')}}
+  </div>
+  @endIf
   @yield('content')
 </body>
 

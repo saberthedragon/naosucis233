@@ -11,7 +11,13 @@
 
   * Bootstrap moved to "view/layout.blade.php"
 
-  * Create button: <a class=bootstrap class href="{{route('products.create')}}">Create<</a>
+  * Create Button: <a class=bootstrap class href="{{route('products.create')}}">Create<</a>
+
+  * Delete Button: <form action="{{route('products.destroy', $product->id)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
+                    @csrf 
+                    @method('DELETE')
+                    <button class="btn btn-error" type="submit">Delete</button>
+                  </form>
 -->
 
 @extends('layout')

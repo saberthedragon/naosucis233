@@ -54,11 +54,15 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             // Validation rules here
             'name' => 'required',
-            'price' => 'decimal', // decimal(19, 4)
+            'price' => 'decimal:19,4', // decimal(19, 4)
             'discription' => 'required',
-            'item_number' => 'ineger', // Resume lecture @ 22:58
-            'image', // imageURL method in Faker'
+            'item_number' => 'ineger', // Resume "Create, Validate, & Delete" lecture @ 22:58
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048', // SimageURL method in Faker'; Skipped in Seeding atm
         ]);
+
+        \App\Models\Product::create($validatedData);
+
+        return redirect()->route('products.index')->with('success', 'Product was added successully');
     } // end of "Store"
 
     /**
@@ -114,7 +118,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
 
-        // blah
+        $product = \App\Models\Product::find($id);
+        $product->delete();
 
+        return redirect()->route('products.index')->with('success', 'Product was deleted');
     } // End of "Destroy"
 }
