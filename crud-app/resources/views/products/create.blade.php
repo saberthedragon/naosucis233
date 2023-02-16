@@ -16,6 +16,10 @@
 @extends('layout')
 
 @section('content')
+<div class="column col-3">
+  <h3>Add a Product</h3>
+
+</div>
 @if ( $errors->any() )
 <div class="toast toast-error">
   @forEach ( $errors->all() as $error)
@@ -24,10 +28,13 @@
 </div>
 @endIf
 
-Bootstrap == Form Here
+
 <form method="POST" action="{{route('products.store')}}">
   @crsf
-  blah blah value="{{old()}}"
+
+  <div class="form-group">
+    @include('products.form')
+  </div>
 </form>
 
 @endSection

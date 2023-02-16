@@ -36,8 +36,8 @@ class ProductController extends Controller
 
     public function create()
     {
-
-        return view('products.create'); // Linked via "Button"
+        $product = new \App\Models\Product;
+        return view('products.create', ['product' => $product]); // Linked via "Button"
     } // end of "Create"
 
     /**
@@ -50,17 +50,9 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        // Form Validation here
-        $validatedData = $request->validate([
-            // Validation rules here
-            'name' => 'required',
-            'price' => 'decimal:19,4', // decimal(19, 4)
-            'discription' => 'required',
-            'item_number' => 'ineger', // Resume "Create, Validate, & Delete" lecture @ 22:58
-            'image' => 'required|mimes:jpg,png,jpeg|max:5048', // SimageURL method in Faker'; Skipped in Seeding atm
-        ]);
+        // Form Validation done in private function ;)
 
-        \App\Models\Product::create($validatedData);
+        \App\Models\Product::create($this->validatedData($request));
 
         return redirect()->route('products.index')->with('success', 'Product was added successully');
     } // end of "Store"
@@ -75,7 +67,7 @@ class ProductController extends Controller
     public function show($id)
     {
 
-        $product = \App\Models\Product::find($id);
+        $product = \App\Models\Product::findOrFail($id);
         return view('products.show', ['product' => $product]);
     } // End of "Show"
 
@@ -89,8 +81,8 @@ class ProductController extends Controller
     public function edit($id)
     {
 
-        //blah
-
+        $product =  \App\Models\Product::findOrFail($id);
+        return view('products.edit', ['product' => $product]);
     } // end of "Edit"
 
     /**
@@ -104,9 +96,12 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
 
-        // blah
+        // Form Validation done in private function ;)
 
-    } // end of "Upate"
+        \App\Models\Product::findOrFail($id)->update($this->validatedData($request));
+
+        return redirect()->route('products.index')->with('success', 'Product was updated successully');
+    } // end of "Update"
 
     /**
      * Remove the specified resource from storage.
@@ -118,9 +113,23 @@ class ProductController extends Controller
     public function destroy($id)
     {
 
-        $product = \App\Models\Product::find($id);
+        $product = \App\Models\Product::findOrFail($id);
         $product->delete();
 
         return redirect()->route('products.index')->with('success', 'Product was deleted');
     } // End of "Destroy"
+
+
+    // Form validation here
+    private function validatedData($request)
+    {
+        $validatedData = $request->validate([
+            // Validation rules here
+            'name' => 'required',
+            'price' => 'decimal:19,4', // decimal(19, 4)
+            'discription' => 'required',
+            'item_number' => 'ineger',
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048', // SimageURL method in Faker'; Skipped in Seeding atm
+        ]);
+    }
 }
