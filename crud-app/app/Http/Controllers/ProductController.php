@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = \App\Models\Product::all();
+        $products = \App\Models\Product::paginate(10);
         return view('products.index', ['products' => $products]);
 
 
@@ -126,10 +126,10 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             // Validation rules here
             'name' => 'required',
-            'price' => 'decimal:19,4', // decimal(19, 4)
-            'discription' => 'required',
-            'item_number' => 'ineger',
-            'image' => 'required|mimes:jpg,png,jpeg|max:5048', // SimageURL method in Faker'; Skipped in Seeding atm
+            'price' => 'decimal:2', // decimal(19, 4)
+            'description' => 'required',
+            'item_number' => 'integer|required',
         ]);
+        return $validatedData;
     }
 }

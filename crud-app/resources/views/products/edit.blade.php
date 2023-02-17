@@ -13,7 +13,7 @@
 
 </div>
 @if ( $errors->any() )
-<div class="toast toast-error">
+<div class="alert alert-danger" role="alert">
   @forEach ( $errors->all() as $error)
   <span>{{$error}}</span><br />
   @endForEach
@@ -22,7 +22,7 @@
 
 
 <form method="POST" action="{{route('products.update', $product->id)}}">
-  @crsf
+  @csrf
   @method('PUT')
 
   <div class="form-group">
@@ -31,7 +31,7 @@
 
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Update Product</button>
-    <a href="{{route('products.index')}}">Cancel</a>
+    <a class="btn btn-danger" href="{{route('products.index')}}">Cancel</a>
   </div>
 </form>
 

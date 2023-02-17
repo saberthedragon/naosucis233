@@ -21,7 +21,7 @@
 
 </div>
 @if ( $errors->any() )
-<div class="toast toast-error">
+<div class="alert alert-danger" role="alert">
   @forEach ( $errors->all() as $error)
   <span>{{$error}}</span><br />
   @endForEach
@@ -30,10 +30,15 @@
 
 
 <form method="POST" action="{{route('products.store')}}">
-  @crsf
+  @csrf
 
   <div class="form-group">
     @include('products.form')
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Add Product</button>
+    <a href="{{route('products.index')}}" class="btn btn-danger">Cancel</a>
   </div>
 </form>
 

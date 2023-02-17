@@ -1,11 +1,15 @@
-<label class="form-label" for="name">Product Name</label>
-<input type="text" class="form-control" id="name" value="{{old('name', $product->name)}}">
+<div class="container mt-5">
+  <table class="table table-bordered mb-5">
+    <label class="form-label" for="name">Product Name</label>
+    <input type="text" class="form-control" name="name" value="{{old('name', $product->name)}}">
 
-<label class=" form-label" for="price">Price</label>
-<input step="0.01" type="number" id="price" class="form-control" value=value="{{old('price', $product->price)}}" />
+    <label class=" form-label" for="price">Price</label>
+    <input step="0.01" type="number" name="price" class="form-control" value="{{old('price', $product->price)}}" />
 
-<label for="description">Item Description</label>
-<textarea class="form-control" id="description" rows="3" value="{{old('discription', $product->discription)}}"></textarea>
+    <label for="description">Item Description</label>
+    <input class="form-control" name="description" rows="3" value="{{old('description', $product->description)}}"></input>
 
-<label class="form-label" for="typeNumber">Item Number</label>
-<input type="number" id="typeNumber" class="form-control" value="{{old('item_number', $product->item_number)}}" />
+    <label class="form-label" for="item_number">Item Number</label>
+    <input type="number" name="item_number" class="form-control" value="{{old('item_number', $product->item_number)}}" />
+  </table>
+</div>
