@@ -1,3 +1,12 @@
+</div>
+@if ( $errors->any() )
+<div class="alert alert-danger" role="alert">
+  @forEach ( $errors->all() as $error)
+  <span>{{$error}}</span><br />
+  @endForEach
+</div>
+@endIf
+
 <div class="container mt-5">
   <table class="table table-bordered mb-5">
     <label class="form-label" for="name">Product Name</label>

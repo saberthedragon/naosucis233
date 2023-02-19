@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = \App\Models\Product::paginate(10);
+        $products = Product::paginate(10);
         return view('products.index', ['products' => $products]);
 
 
@@ -36,7 +36,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $product = new \App\Models\Product;
+        $product = new Product;
         return view('products.create', ['product' => $product]); // Linked via "Button"
     } // end of "Create"
 
@@ -52,7 +52,7 @@ class ProductController extends Controller
 
         // Form Validation done in private function ;)
 
-        \App\Models\Product::create($this->validatedData($request));
+        Product::create($this->validatedData($request));
 
         return redirect()->route('products.index')->with('success', 'Product was added successully');
     } // end of "Store"
@@ -67,7 +67,7 @@ class ProductController extends Controller
     public function show($id)
     {
 
-        $product = \App\Models\Product::findOrFail($id);
+        $product = Product::findOrFail($id);
         return view('products.show', ['product' => $product]);
     } // End of "Show"
 
@@ -81,7 +81,7 @@ class ProductController extends Controller
     public function edit($id)
     {
 
-        $product =  \App\Models\Product::findOrFail($id);
+        $product =  Product::findOrFail($id);
         return view('products.edit', ['product' => $product]);
     } // end of "Edit"
 
@@ -98,7 +98,7 @@ class ProductController extends Controller
 
         // Form Validation done in private function ;)
 
-        \App\Models\Product::findOrFail($id)->update($this->validatedData($request));
+        Product::findOrFail($id)->update($this->validatedData($request));
 
         return redirect()->route('products.index')->with('success', 'Product was updated successully');
     } // end of "Update"
@@ -113,7 +113,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
 
-        $product = \App\Models\Product::findOrFail($id);
+        $product = Product::findOrFail($id);
         $product->delete();
 
         return redirect()->route('products.index')->with('success', 'Product was deleted');
