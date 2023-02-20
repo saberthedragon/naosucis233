@@ -10,7 +10,7 @@ class Product extends Model
 
   protected $fillable = [
     'name',
-    'price', // decimal(19, 4)
+    'price', // decimal(19, 2)
     'description',
     'item_number',
     'image', // imageURL method in Faker
