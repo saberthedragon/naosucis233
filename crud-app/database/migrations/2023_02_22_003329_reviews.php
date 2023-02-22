@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use PhpParser\Node\NullableType;
 
 return new class extends Migration
 {
@@ -13,17 +14,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
-            $table->decimal('price', 19, 2);
-            $table->text('description');
-            $table->integer('item_number');
-            $table->string('image')->nullable();
-
+            $table->integer('rating');
             $table->integer('product_id')->index();
+            $table->text('comment')->nullable();
         });
+
+        /*
+To Add a column / ALTER Table, do:
+Schema::table('tableName', function (Blueprint $table) {
+            $table->fieldChanged;
+        
+        });
+
+        */
     }
 
     /**
@@ -33,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('reviews');
     }
 };

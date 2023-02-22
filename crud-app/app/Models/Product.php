@@ -15,4 +15,9 @@ class Product extends Model
     'item_number',
     'image', // imageURL method in Faker
   ];
+
+  public function review()
+  {
+    return $this->hasMany(Review::class);
+  }
 } // End of class here
