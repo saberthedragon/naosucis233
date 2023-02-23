@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,10 +14,16 @@ class ProductController extends Controller
    * @return \Illuminate\Http\Response
    */
 
+  public function index()
+  {
+    $reviews = Product::with('review')->get();
+    return view('reviews.index', ['reviews' => $$reviews]);
+  } // End of "Index"
+
   public function create() // Fix "N+1" issue here?
   {
-    $product = new Product;
-    return view('products.create', ['product' => $product]); // Linked via "Button"
+    $review = new Review();
+    return view('review.create', ['review' => $review]); // Linked via "Button"
   } // end of "Create"
 
   /**

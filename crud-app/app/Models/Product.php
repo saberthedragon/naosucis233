@@ -18,6 +18,6 @@ class Product extends Model
 
   public function review()
   {
-    return $this->hasMany(Review::class);
+    return $this->hasMany(Review::class); // Resume "Table Demo" lecture @ 22:07
   }
 } // End of class here

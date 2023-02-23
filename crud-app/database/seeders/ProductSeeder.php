@@ -38,8 +38,6 @@ class ProductSeeder extends Seeder
                 'description' => $faker->text,
                 'item_number' => $faker->numberBetween(100, 999),
                 'image' => $faker->imageUrl(width: 50, height: 50),
-
-                'product_id' => $faker->randomNumber()
             ]);
         } // End of foreach
     } // End of "Run" Function

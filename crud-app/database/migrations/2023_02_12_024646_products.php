@@ -21,8 +21,6 @@ return new class extends Migration
             $table->text('description');
             $table->integer('item_number');
             $table->string('image')->nullable();
-
-            $table->integer('product_id')->index();
         });
     }
 

@@ -48,8 +48,34 @@
   </table>
 </div>
 
+<div>
+  <h4 class="fw-bold">
+    Reviews:
+  </h4>
+  <div>
+    @if( empty($product->rating) )
+    <p>
+      No reviews yet
+    </p>
+    @else
+    <label class="form-label" for="review->rating">Sort by Rating</label>
+    <select class="form-select" name="review">
+
+      @forEach (range(1,5) as $ratingOption)
+      <option value="{{$ratingOption}}" {{$ratingOption == old('rating') ? 'selected': ''}}>{{$ratingOption}}</option>
+    </select>
+    @endForEach
+    @endIf
+
+
+  </div>
+</div>
+
+
 <!-- 
   * Display a small form to add a review (comment and rating)
+
+     * Has the "n+1" fix here (??)
 
   * Rating will be acquired by a select list displaying numbers 1-5
 
