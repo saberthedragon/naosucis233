@@ -8,25 +8,6 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-
-
-  public function create() // Fix "N+1" issue here?
-  {
-    $review = new Review();
-    return view('reviews.reviewForm', ['review' => $review]); // Linked via "Button"
-  } // end of "Create"
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
 
   public function store(Request $request)
   {
@@ -35,7 +16,8 @@ class ReviewController extends Controller
 
     Review::create($this->validatedData($request));
 
-    return redirect()->route('products.show')->with('success', 'Comment was added successully');
+
+    return redirect()->route('products.show', $request->product_id)->with('success', 'Comment was added successully');
   } // end of "Store"
 
   /**
@@ -46,13 +28,13 @@ class ReviewController extends Controller
    */
 
 
-  public function destroy($product_id) // Fix "N+1" issue here?
+  public function destroy($review_id) // Fix "N+1" issue here?
   {
 
-    $Review = Review::findOrFail($product_id);
-    $Review->delete();
+    $review = Review::findOrFail($review_id);
+    $review->delete();
 
-    return redirect()->route('products.show')->with('success', 'Comment was deleted');
+    return redirect()->route('products.show', $review->product_id)->with('success', 'Comment was deleted');
   } // End of "Destroy"
 
 

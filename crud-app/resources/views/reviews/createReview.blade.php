@@ -29,8 +29,8 @@
       @endForEach
     </select>
 
-    <label class="form-label" for="item_number">Item Number</label>
-    <input type="number" name="item_number" class="form-control" value="{{old('item_number', $product->item_number)}}" />
+    <label class="form-label" for="product_id">Product ID</label>
+    <input type="number" name="product_id" class="form-control" value="{{old('product_id', $review->product_id)}}" />
   </table>
 </div>
 <div class="form-group">
