@@ -13,10 +13,17 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(10);
-        return view('products.index', ['products' => $products]);
+        // $sortBy = $request->query('sortBy') ??  'rating';
+        // $direction = $request->query('direction') ?? 'asc';
+
+        // // Eager loading here
+        // $products = Product::with('review')->orderBy($sortBy, $direction);
+
+        $products = Product::with('reviews');
+
+        return view('products.index', ['products' => $products->paginate(10)]);
 
 
         // Above piece converts the commented block, for our "Web.php Routing"
@@ -67,7 +74,8 @@ class ProductController extends Controller
     public function show($id)
     {
 
-        $product = Product::with('review')->findOrFail($id);
+        $product = Product::with('reviews')->findOrFail($id);
+
 
         return view('products.show', ['product' => $product]);
     } // End of "Show"

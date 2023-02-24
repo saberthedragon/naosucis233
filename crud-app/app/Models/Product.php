@@ -16,7 +16,7 @@ class Product extends Model
     'image', // imageURL method in Faker
   ];
 
-  public function review()
+  public function reviews()
   {
     return $this->hasMany(Review::class); // Resume "Table Demo" lecture @ 22:07
   }

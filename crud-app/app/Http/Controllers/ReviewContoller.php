@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ReviewController extends Controller
 {
   /**
    * Display a listing of the resource.
@@ -14,16 +14,11 @@ class ProductController extends Controller
    * @return \Illuminate\Http\Response
    */
 
-  public function index()
-  {
-    $reviews = Product::with('review')->get();
-    return view('reviews.index', ['reviews' => $$reviews]);
-  } // End of "Index"
 
   public function create() // Fix "N+1" issue here?
   {
     $review = new Review();
-    return view('review.create', ['review' => $review]); // Linked via "Button"
+    return view('reviews.reviewForm', ['review' => $review]); // Linked via "Button"
   } // end of "Create"
 
   /**
@@ -38,7 +33,7 @@ class ProductController extends Controller
 
     // Form Validation done in private function ;)
 
-    Product::create($this->validatedData($request));
+    Review::create($this->validatedData($request));
 
     return redirect()->route('products.show')->with('success', 'Comment was added successully');
   } // end of "Store"
@@ -51,11 +46,11 @@ class ProductController extends Controller
    */
 
 
-  public function destroy($id) // Fix "N+1" issue here?
+  public function destroy($product_id) // Fix "N+1" issue here?
   {
 
-    $product = Product::findOrFail($id);
-    $product->delete();
+    $Review = Review::findOrFail($product_id);
+    $Review->delete();
 
     return redirect()->route('products.show')->with('success', 'Comment was deleted');
   } // End of "Destroy"
@@ -68,7 +63,7 @@ class ProductController extends Controller
       // Validation rules here
       'comment' => 'required',
       'rating' => 'integer', // Make selectable 1-5
-      'product_number' => 'integer|required',
+      'product_id' => 'integer|required',
     ]);
     return $validatedData;
   }

@@ -48,31 +48,69 @@
   </table>
 </div>
 
-<div>
-  <h4 class="fw-bold">
-    Reviews:
-  </h4>
-  <div>
-    @if( empty($product->rating) )
-    <p>
-      No reviews yet
-    </p>
-    @else
-    <label class="form-label" for="review->rating">Sort by Rating</label>
-    <select class="form-select" name="review">
+
+<h4 class="fw-bold">
+  Reviews:
+</h4>
+
+@if( empty($product->reviews) )
+<p>
+  No reviews yet
+</p>
+@else
+
+<!-- <label class="form-label" for="rating">Sort by Rating</label>
+    <select class="form-select" name="rating">
 
       @forEach (range(1,5) as $ratingOption)
-      <option value="{{$ratingOption}}" {{$ratingOption == old('rating') ? 'selected': ''}}>{{$ratingOption}}</option>
-    </select>
-    @endForEach
-    @endIf
+      <option value="{{$ratingOption}}">{{$ratingOption}}</option>
+      @endForEach
+    </select> -->
 
 
-  </div>
+<div class="container mt-5">
+  <a class="btn btn-primary" href="{{route('reviews.create')}}">Add Review</a>
+
+  <table class="table table-bordered mb-5">
+    <thead>
+      <tr class="table-success">
+        <th scope="col">Comment</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Date Added</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($product->reviews as $review)
+      <tr>
+        <td scope="row">{{ $review->comment }}</td>
+
+        <td>{{$review->rating}} &#9733</td> <!-- {{str_repeat( "*", $review->rating)}} -->
+        <td>{{ $review->created_at }}</td>
+        <td>{{ $product->item_number }}</td>
+        <td>
+          <form class="btn btn-danger" action="{{route('reviews.destroy', $product->id)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-error" type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+
 </div>
+
+@endIf
+
 
 
 <!-- 
+Test page @ item# 752
+
   * Display a small form to add a review (comment and rating)
 
      * Has the "n+1" fix here (??)
