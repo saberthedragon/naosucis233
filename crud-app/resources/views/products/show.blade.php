@@ -53,11 +53,7 @@
   Reviews:
 </h4>
 
-@if( empty($product->reviews) )
-<p>
-  No reviews yet
-</p>
-@else
+
 
 <!-- <label class="form-label" for="rating">Sort by Rating</label>
     <select class="form-select" name="rating">
@@ -106,6 +102,11 @@
 </div>
 </form>
 
+@if( count($product->reviews) == 0 )
+<p>
+  No reviews yet
+</p>
+@else
 
 <div class="container mt-5">
   <!-- <a class="btn btn-primary" href="{{route('reviews.store', $product->id)}}">Add Review</a> -->
