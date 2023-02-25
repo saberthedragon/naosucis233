@@ -103,9 +103,9 @@
 </form>
 
 @if( count($product->reviews) == 0 )
-<p>
-  No reviews yet
-</p>
+<div>
+  <h2>No reviews yet</h2>
+</div>
 @else
 
 <div class="container mt-5">
