@@ -14,7 +14,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request)
+    public function index()
     {
         // $sortBy = $request->query('sortBy') ??  'rating';
         // $direction = $request->query('direction') ?? 'asc';
