@@ -1,0 +1,51 @@
+CRUD users
+
+  * Please create the necessary route, controller and blade views to perform CRUD operations on users
+
+  * Assure list of users is paginated
+
+  * Fields to be viewed, created, edited are name and email only. Not doing password changes.
+
+
+Seeding
+
+  * Update Review seeds and assure they are associated to random and existing users
+
+
+Auth Specifications
+
+  * Assure the products and users resources require authentication to access
+
+  * Update products and users templates to use the layout that is offered by Breeze.
+      * You have some liberty here to customize the layout CSS, IF you have time. Otherwise, just use the defaults from Breeze.
+
+  * Make sure links to routes products.index and users.index are in the navigation
+
+Authorization requirements:
+
+  ** Users with the "viewer" role:
+
+      * CAN see products (view, paginate)
+      * CAN leave a review on a product
+
+
+      * CANNOT create, edit, or delete a product
+      * CANNOT access anything (links, routes) related to users
+      * CANNOT delete a review
+
+
+  ** Users with "administrator" role:
+
+      * Can see, create, edit, and delete products
+      * Can see, create, edit, and delete users
+      * Can delete reviews
+
+!! Please protect and test public URLs !!
+     I should NOT be able to type /create or /edit, /users into the browser and have access to a page that I'm unauthorized for.
+
+Reviews on the product show page
+  * Because user's must be auth'd to see products and post a review:
+      * Display associated user's name along with the review
+      
+      
+    * A product may have reviews submitted by different users. Log in and out of different users and test this!
