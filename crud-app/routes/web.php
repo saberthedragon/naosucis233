@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
+use Database\Seeders\CrudUserSeeder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +23,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('products', ProductController::class);
+Route::resource('products', ProductController::class)->middleware('auth'); // Middleware injects this code into the "authorization"
 Route::resource('reviews', ReviewController::class);
-Route::resource('users', RegisteredUserController::class);
+Route::resource('users', CrudUserController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

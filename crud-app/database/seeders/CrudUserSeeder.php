@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class CrudUserSeeder extends Seeder
 {
@@ -22,8 +23,9 @@ class CrudUserSeeder extends Seeder
             \App\Models\User::create([
                 'name' => $faker->userName,
                 'email' => $faker->email(),
-                'password' => "MyDogSpot83",
-                'role' => \App\Models\User::all()->pluck('id')->random(),
+                'password' => Hash::make('MyDogSpot83'),
+                'role' => $faker->randomElement(['viewer', 'administrator'])
+
             ]);
         } // End of foreach
     }
