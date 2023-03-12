@@ -42,8 +42,12 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
+    public function create(Request $request)
     {
+        if ($request->user()->cannot('create', Product::class)) {
+            return redirect()->route('products.index')->with('error', 'You do not have access to this Page. Please sign in as an Admin.');
+        };
+
         $product = new Product;
         return view('products.create', ['product' => $product]); // Linked via "Button"
     } // end of "Create"
@@ -88,8 +92,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+        if ($request->user()->cannot('edit', Product::class)) {
+            return redirect()->route('products.index')->with('error', 'You do not have access to this Page. Please sign in as an Admin.');
+        };
 
         $product =  Product::findOrFail($id);
         return view('products.edit', ['product' => $product]);
@@ -106,7 +113,9 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
 
-        // Form Validation done in private function ;)
+        if ($request->user()->cannot('update', Product::class)) {
+            return redirect()->route('products.index')->with('error', 'You do not have access to this Page. Please sign in as an Admin.');
+        };
 
         Product::findOrFail($id)->update($this->validatedData($request));
 
@@ -120,8 +129,12 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+
+        if ($request->user()->cannot('delete', Product::class)) {
+            return redirect()->route('products.index')->with('error', 'You do not have access to this Page. Please sign in as an Admin.');
+        };
 
         $product = Product::findOrFail($id);
         $product->delete();

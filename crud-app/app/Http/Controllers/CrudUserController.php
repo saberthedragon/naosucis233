@@ -14,8 +14,11 @@ class CrudUserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->user()->cannot('create', User::class)) {
+            return redirect()->route('products.index')->with('error', 'You do not have access to this Page. Please sign in as an Admin.');
+        };
 
 
         $users = User::with('user_id');

@@ -113,9 +113,9 @@
 
 
         <td class="text-nowrap">@for($i = 0; $i < $review->rating; $i++ ) &#9733 @endFor </td>
-        <!-- {{str_repeat( "*", $review->rating)}} -->
 
         <td>{{ $review->created_at }}</td>
+        @can('delete', $$review)
         <td>
           <form class="btn btn-danger" action="{{route('reviews.destroy', $review->id)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
             @csrf
@@ -123,6 +123,7 @@
             <button class="btn btn-error" type="submit">Delete</button>
           </form>
         </td>
+        @endCan
       </tr>
       @endforeach
     </tbody>

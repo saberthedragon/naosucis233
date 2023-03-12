@@ -16,6 +16,8 @@
 </div>
 @endif
 
+@can('viewAny', App\Models\Users::classs) <!-- Needed? -->
+
 <div class="container mt-5">
   <a class="btn btn-primary" href="{{route('users.create')}}">Create User</a>
   {{-- Pagination --}}
@@ -33,7 +35,7 @@
     <tbody>
       @foreach($users as $user)
       <tr>
-        <th scope="row">{{ $user->name }}</th>
+        <th scope="row">{{ $user->user }}</th>
         <td>{{ $user->email }}</td>
         <td><a href="{{route('users.show', $user->id)}}">Show Detail</a></td>
         <td><a class="btn btn-secondary" href="{{route('users.edit', $user->id)}}">Edit</a></td>
