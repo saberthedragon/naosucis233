@@ -51,7 +51,7 @@
         <td>{{ $product->item_number }}</td>
         <td><img src="{{$product->image}}" alt="{{$product->image}}" class="img-thumbnail"></td>
         <td><a href="{{route('products.show', $product->id)}}">Show Detail</a></td>
-        @can('edit', $product)
+        @can('update', $product)
         <td><a class="btn btn-secondary" href="{{route('products.edit', $product->id)}}">Edit</a></td>
         @endCan
 

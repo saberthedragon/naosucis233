@@ -94,7 +94,7 @@ class ProductController extends Controller
 
     public function edit($id, Request $request)
     {
-        if ($request->user()->cannot('edit', Product::class)) {
+        if ($request->user()->cannot('update', Product::class)) {
             return redirect()->route('products.index')->with('error', 'You do not have access to this Page. Please sign in as an Admin.');
         };
 

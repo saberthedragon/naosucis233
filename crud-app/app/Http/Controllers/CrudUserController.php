@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
+
+
 class CrudUserController extends Controller
 {
     /**
@@ -16,12 +18,12 @@ class CrudUserController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->user()->cannot('create', User::class)) {
+        if ($request->user()->cannot('view', User::class)) {
             return redirect()->route('products.index')->with('error', 'You do not have access to this Page. Please sign in as an Admin.');
         };
 
 
-        $users = User::with('user_id');
+        $users = User::with('reviews');
 
         return view('users.index', ['users' => $users->paginate(10)]);
 
@@ -41,8 +43,12 @@ class CrudUserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create()
+    public function create(Request $request)
     {
+        if ($request->user()->cannot('view', User::class)) {
+            return redirect()->route('products.index')->with('error', 'You do not have access to this Page. Please sign in as an Admin.');
+        };
+
         $user = new User;
         return view('users.create', ['user' => $user]); // Linked via "Button"
     } // end of "Create"
@@ -90,7 +96,7 @@ class CrudUserController extends Controller
     public function edit($id)
     {
 
-        $user =  user::findOrFail($id);
+        $user =  User::findOrFail($id);
         return view('users.edit', ['user' => $user]);
     } // end of "Edit"
 

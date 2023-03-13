@@ -51,10 +51,10 @@ class ProductPolicy
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    // public function update(User $user, Product $product)
-    // {
-    //     return $user->role == "administrator"; // Broken
-    // }
+    public function update(User $user)
+    {
+        return $user->role == "administrator";
+    }
 
     /**
      * Determine whether the user can delete the model.
@@ -63,7 +63,7 @@ class ProductPolicy
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Product $product)
+    public function delete(User $user)
     {
         return $user->role == "administrator";
     }

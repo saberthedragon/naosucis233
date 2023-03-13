@@ -17,6 +17,19 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Displaying Error / Success -->
+    @if( session()->get('error') )
+    <div class="alert alert-danger" role="alert">
+        {{session()->get('error')}}
+    </div>
+    @endIf
+
+    @if( session()->get('success') )
+    <div class="alert alert-success" role="alert">
+        {{session()->get('success')}}
+    </div>
+    @endIf
 </head>
 
 <body class="font-sans antialiased">

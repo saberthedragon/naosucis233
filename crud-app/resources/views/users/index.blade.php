@@ -16,7 +16,16 @@
 </div>
 @endif
 
-@can('viewAny', App\Models\Users::classs) <!-- Needed? -->
+</div>
+@if ( $errors->any() )
+<div class="alert alert-danger" role="alert">
+  @forEach ( $errors->all() as $error)
+  <span>{{$error}}</span><br />
+  @endForEach
+</div>
+@endIf
+
+@can('viewAny', App\Models\User::class)
 
 <div class="container mt-5">
   <a class="btn btn-primary" href="{{route('users.create')}}">Create User</a>
@@ -35,9 +44,8 @@
     <tbody>
       @foreach($users as $user)
       <tr>
-        <th scope="row">{{ $user->user }}</th>
+        <th scope="row">{{ $user->name }}</th>
         <td>{{ $user->email }}</td>
-        <td><a href="{{route('users.show', $user->id)}}">Show Detail</a></td>
         <td><a class="btn btn-secondary" href="{{route('users.edit', $user->id)}}">Edit</a></td>
         <td>
           <form class="btn btn-danger" action="{{route('users.destroy', $user->id)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
@@ -53,4 +61,4 @@
 
 </div>
 
-@endSection
+@endcan

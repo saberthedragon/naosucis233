@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function reviews()
     {
-        return $this->hasMany(Review::class); // Resume "Table Demo" lecture @ 22:07
+        return $this->hasMany(Review::class);
     }
 } // End of class here

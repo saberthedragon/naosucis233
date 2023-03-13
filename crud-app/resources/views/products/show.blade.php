@@ -38,15 +38,6 @@
 </h4>
 
 
-
-<!-- <label class="form-label" for="rating">Sort by Rating</label>
-    <select class="form-select" name="rating">
-
-      @forEach (range(1,5) as $ratingOption)
-      <option value="{{$ratingOption}}">{{$ratingOption}}</option>
-      @endForEach
-    </select> -->
-
 <div class="column col-3">
   <h3>Add a Review</h3>
 
@@ -77,8 +68,8 @@
       @endForEach
     </select>
 
-    <label class="form-label" for="product_id" hidden>Product ID</label>
     <input type="number" name="product_id" class="form-control" value="{{$product->id}}" hidden />
+    <input type="number" name="user_id" class="form-control" value="{{Auth::user()->id}}" hidden />
   </table>
 </div>
 <div class="form-group">
@@ -98,24 +89,26 @@
   <table class="table table-bordered mb-5">
     <thead>
       <tr class="table-success">
+        <th scope="col">Name</th>
         <th scope="col">Comment</th>
         <th scope="col">Rating</th>
         <th scope="col">Date Added</th>
+        @can('viewAny', App\Models\User::class)
         <th></th>
-        <th></th>
-        <th></th>
+        @endCan
       </tr>
     </thead>
     <tbody>
       @foreach($product->reviews as $review)
       <tr>
+        <td>{{ $review->user->name }}</td>
         <td scope="row">{{ $review->comment }}</td>
 
 
         <td class="text-nowrap">@for($i = 0; $i < $review->rating; $i++ ) &#9733 @endFor </td>
 
         <td>{{ $review->created_at }}</td>
-        @can('delete', $$review)
+        @can('delete', App\Models\Product::class)
         <td>
           <form class="btn btn-danger" action="{{route('reviews.destroy', $review->id)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
             @csrf
