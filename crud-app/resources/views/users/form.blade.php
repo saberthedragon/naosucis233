@@ -16,6 +16,9 @@
 
     <label for="description">email</label>
     <input class="form-control" name="email" rows="3" value="{{old('email', $user->email)}}"></input>
+
+    <input type="text" name="password" class="form-control" value='MyDogSpot83' hidden />
+
   </table>
 </div>
 </div>

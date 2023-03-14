@@ -14,6 +14,7 @@
       @include('users.form')
     </div>
 
+
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Add User</button>
       <a href="{{route('users.index')}}" class="btn btn-danger">Cancel</a>

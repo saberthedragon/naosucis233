@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 
 
@@ -50,7 +52,12 @@ class CrudUserController extends Controller
         };
 
         $user = new User;
+
         return view('users.create', ['user' => $user]); // Linked via "Button"
+
+
+
+
     } // end of "Create"
 
     /**
@@ -63,9 +70,22 @@ class CrudUserController extends Controller
     public function store(Request $request)
     {
 
-        // Form Validation done in private function ;)
+        // Form Validation done in private function ;)]
 
-        User::create($this->validatedData($request));
+        $tempUser = $this->validatedData($request);
+
+        $password = $tempUser['password']; // get the value of password field
+
+
+        $hashed = Hash::make($password); // encrypt the password
+
+        $tempUser['password'] = $hashed;
+
+
+        User::create($tempUser);
+
+
+
 
         return redirect()->route('users.index')->with('success', 'user was added successully');
     } // end of "Store"
@@ -142,6 +162,7 @@ class CrudUserController extends Controller
             // Validation rules here
             'name' => 'required',
             'email' => 'required',
+            'password' => 'required',
         ]);
         return $validatedData;
     }

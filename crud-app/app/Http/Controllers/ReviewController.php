@@ -28,12 +28,8 @@ class ReviewController extends Controller
    */
 
 
-  public function destroy($review_id, Request $request) // Fix "N+1" issue here?
+  public function destroy($review_id, Request $request)
   {
-
-    if ($request->user()->cannot('delete', Review::class)) {
-      return redirect()->route('products.show')->with('error', 'You do not have access to this Page. Please sign in as an Admin.');
-    };
 
     $review = Review::findOrFail($review_id);
     $review->delete();

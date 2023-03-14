@@ -70,6 +70,7 @@
 
     <input type="number" name="product_id" class="form-control" value="{{$product->id}}" hidden />
     <input type="number" name="user_id" class="form-control" value="{{Auth::user()->id}}" hidden />
+
   </table>
 </div>
 <div class="form-group">
@@ -101,7 +102,14 @@
     <tbody>
       @foreach($product->reviews as $review)
       <tr>
-        <td>{{ $review->user->name }}</td>
+
+        @php
+        $user = \App\Models\User::where('id', $review->user_id)->first()->name?? 'deleted by admin';
+
+        @endphp
+        <td>{{ $user}}</td>
+
+
         <td scope="row">{{ $review->comment }}</td>
 
 
