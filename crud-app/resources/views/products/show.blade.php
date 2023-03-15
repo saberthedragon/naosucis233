@@ -100,15 +100,11 @@
       </tr>
     </thead>
     <tbody>
+
       @foreach($product->reviews as $review)
       <tr>
 
-        @php
-        $user = Auth::user()->where('id', $review->user_id)->first()->name?? 'deleted by admin';
-        Auth::user()->id
-        @endphp
-
-        <td>{{ $user}}</td>
+        <td>{{$review?->user?->name ?? 'deleted by admin'}}</td>
 
 
         <td scope="row">{{ $review->comment }}</td>
