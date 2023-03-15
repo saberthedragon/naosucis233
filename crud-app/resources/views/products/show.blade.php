@@ -104,9 +104,10 @@
       <tr>
 
         @php
-        $user = \App\Models\User::where('id', $review->user_id)->first()->name?? 'deleted by admin';
-
+        $user = Auth::user()->where('id', $review->user_id)->first()->name?? 'deleted by admin';
+        Auth::user()->id
         @endphp
+
         <td>{{ $user}}</td>
 
 

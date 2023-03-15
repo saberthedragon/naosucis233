@@ -46,6 +46,7 @@ class ReviewController extends Controller
       'comment' => 'required',
       'rating' => 'integer', // Make selectable 1-5
       'product_id' => 'integer|required',
+      'user_id' => 'required'
     ]);
     return $validatedData;
   }
