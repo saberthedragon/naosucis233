@@ -1,21 +1,8 @@
-<!-- 
-* Bootstrap for "Form"
-
-* Allow input of "Non-auto generated items" (ie: NO date / ID needed. ;) )
-
-* Send to "New Info" to "store" ie: <form method="POST" action="{{route('products.store')}}">
-
-* Link "Cancel" button to index.blade ;)
-
-* Validate via "@crsf" (here); Actual validation done in Controller.store().
-
-* 
-
-  -->
-
-@extends('layout')
+@extends('dashboard')
 
 @section('content')
+
+@can('create', App\Models\Product::class)
 <div class="column col-3">
   <h3>Add a Product</h3>
 
@@ -32,5 +19,6 @@
       <a href="{{route('products.index')}}" class="btn btn-danger">Cancel</a>
     </div>
   </form>
+  @endCan
 
   @endSection
