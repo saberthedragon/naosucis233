@@ -28,7 +28,7 @@ class ReviewController extends Controller
    */
 
 
-  public function destroy($review_id) // Fix "N+1" issue here?
+  public function destroy($review_id, Request $request)
   {
 
     $review = Review::findOrFail($review_id);
@@ -46,6 +46,7 @@ class ReviewController extends Controller
       'comment' => 'required',
       'rating' => 'integer', // Make selectable 1-5
       'product_id' => 'integer|required',
+      'user_id' => 'required'
     ]);
     return $validatedData;
   }
