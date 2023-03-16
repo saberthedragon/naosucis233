@@ -17,6 +17,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <livewire:styles />
 
     <!-- Displaying Error / Success -->
     @if( session()->get('error') )
@@ -50,6 +51,7 @@
             {{ $slot }}
         </main>
     </div>
+    <livewire:scripts />
 </body>
 
 </html>
