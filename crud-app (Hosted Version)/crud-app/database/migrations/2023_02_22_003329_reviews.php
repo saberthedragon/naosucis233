@@ -26,7 +26,7 @@ return new class extends Migration
 To Add a column / ALTER Table, do:
 Schema::table('tableName', function (Blueprint $table) {
             $table->fieldChanged;
-        
+
         });
 
         */

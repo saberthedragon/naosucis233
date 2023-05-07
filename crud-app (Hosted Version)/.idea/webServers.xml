@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7bc4d6dd-8682-4845-a3b9-d744841890eb" name="crudapp.thelostbranch.com" url="http://crudapp.thelostbranch.com">
+        <fileTransfer rootFolder="/home/dh_wcqkxs/crudapp.thelostbranch.com" accessType="SFTP" host="crudapp.thelostbranch.com" port="22" sshConfigId="8ab46e95-bb28-44b1-8110-9dd38a2152c3" sshConfig="dh_wcqkxs@crudapp.thelostbranch.com:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

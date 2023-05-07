@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="crudapp.thelostbranch.com" id="8ab46e95-bb28-44b1-8110-9dd38a2152c3" port="22" nameFormat="DESCRIPTIVE" username="dh_wcqkxs" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>
